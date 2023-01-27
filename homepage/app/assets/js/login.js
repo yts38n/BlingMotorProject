@@ -7,7 +7,7 @@ function customerLogin() {
     let userPassword = document.querySelector('#userPassword').value.toString();
 
     if (customerEmail !== '' && userPassword !== '') {
-        axios.post(`http://localhost:3000/api/v1/customers/login`, {
+        axios.post(`https://bling-motor-mock-server.onrender.com/api/v1/customers/login`, {
                 'data': {
                     'customerEmail': customerEmail,
                     'password': userPassword

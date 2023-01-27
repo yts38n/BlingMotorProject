@@ -35,7 +35,7 @@ updateInfo.addEventListener('click', () => {
 
 function getUserInfoData() {
     let userToken = blingMotorUserStatus['userInfo']['customerEmail'];
-    axios.post(`http://localhost:3000/api/v1/customers/info`, {
+    axios.post(`https://bling-motor-mock-server.onrender.com/api/v1/customers/info`, {
             'data': {
                 'token': userToken,
             }
@@ -51,7 +51,7 @@ function getUserInfoData() {
 
 function editUserInfoData(newUserInfo) {
     let userToken = blingMotorUserStatus['userInfo']['customerEmail'];
-    axios.patch(`http://localhost:3000/api/v1/customers/info`, {
+    axios.patch(`https://bling-motor-mock-server.onrender.com/api/v1/customers/info`, {
             'data': {
                 'token': userToken,
                 'newUserInfo': newUserInfo
