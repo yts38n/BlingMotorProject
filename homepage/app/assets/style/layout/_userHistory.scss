@@ -1,0 +1,55 @@
+.userHistory {
+    padding: 48px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+
+    .sectionTitle {
+        border-bottom: 1px solid #000;
+    }
+
+    .table {
+        text-align: center;
+        font-size: 14px;
+        .userHistoryTableHeader{
+            th:nth-child(1){        
+                width: 10%;
+                
+                @include media-breakpoint-up(lg){
+                    width: unset;
+                }
+            }
+        }
+
+        td {
+            vertical-align: middle;
+            max-height: 3rem;
+        }
+
+        th:nth-child(3), td:nth-child(3){
+            display: none;
+
+            @include media-breakpoint-up(lg){
+                display: table-cell;
+            }
+        }
+        @include media-breakpoint-up(md){
+            font-size: 16px;
+        }
+    }
+
+    .reservation{
+        padding: 24px 0;
+    }
+    .editReservationBtn {
+        text-decoration: underline;
+        color: $primary;
+    }
+
+    .userHistoryEditBookingBtn-group{
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+    }
+}

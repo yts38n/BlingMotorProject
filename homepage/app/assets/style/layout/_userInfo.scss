@@ -1,0 +1,38 @@
+.userInfo {
+    padding: 48px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+
+    .sectionTitle {
+        border-bottom: 1px solid #000;
+    }
+}
+
+.userInfo-form{
+max-width: 400px;
+}
+
+.userInfo-input {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    input[type=text],
+    input[type=email],
+    input[type=tel],
+    input[type=password] {
+        max-width: 70%;
+    }
+}
+
+.userInfoBtnControl{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+
+    .btn{
+        color: $white;
+    }
+}

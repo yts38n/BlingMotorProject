@@ -1,0 +1,24 @@
+body {
+    font-family: 'Noto Sans TC', sans-serif;
+}
+
+main{
+    min-height: 70vh;
+}
+
+a {
+    text-decoration: none;
+}
+
+.bottom-initial {
+    bottom: initial;
+}
+
+.material-symbols-outlined{
+    margin-bottom: 0;
+    vertical-align: text-bottom;
+
+    @include media-breakpoint-up(xl){
+        width: 32px;
+    }
+}

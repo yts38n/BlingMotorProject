@@ -1,0 +1,112 @@
+.registerAndLogin {
+    padding: 48px 16px;
+    display: flex;
+    justify-content: center;
+
+    @include media-breakpoint-up(md){
+        gap: 40px;
+        align-items: center;
+    }
+}
+
+.registerAndLogin-wrap {
+    height: 100%;
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 40px;
+
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-bottom: 20px;
+
+        .form-control:focus {
+            border-color: $primary;
+        }
+
+        .btn-gradient {
+            font-size: 1rem;
+            line-height: 1.5;
+            width: 100%;
+            margin-top: 1rem;
+            border-radius: 25px;
+        }
+
+        input[type=text],
+        input[type=tel],
+        input[type=email],
+        input[type=password] {
+            border: 0;
+            color: $primary;
+            display: block;
+            width: 100%;
+            background: $gray-200;
+            height: 50px;
+            border-radius: 25px;
+            padding-left: 2rem;
+
+            &::placeholder {
+                color: $primary;
+                opacity: 0.5;
+            }
+        }
+    }
+
+    @include media-breakpoint-up(md){
+        justify-content: center;
+        width: 400px;
+        flex-shrink: 0;
+    }
+}
+
+.form-divider {
+    position: relative;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .divider-bar {
+        width: 40%;
+        height: 2px;
+        position: absolute;
+        background: $dark-200;
+
+        &-left {
+            left: 0;
+        }
+
+        &-right {
+            left: auto;
+            right: 0;
+        }
+    }
+}
+
+#signIn_button {
+    display: inline-block;
+
+    div {
+        display: flex;
+        justify-content: center;
+
+        iframe {
+            margin: 0 !important;
+        }
+    }
+}
+
+.registerAndLoginBottom{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: auto;
+
+    @include media-breakpoint-up(md) {
+        margin-top: unset;
+    }
+}
