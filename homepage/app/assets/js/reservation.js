@@ -24,7 +24,7 @@ function newBooking() {
             })
             .then(response => {
                 alert(response.data.data.status);
-                window.location.replace('../index.html');
+                window.location.replace('index.html');
             })
             .catch(error => {
                 alert(error.response.data.data.msg);
