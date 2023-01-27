@@ -277,7 +277,7 @@ function doSignout() {
     blingMotorUserStatus['isLogin'] = false;
     blingMotorUserStatus['userInfo'] = {};
   }
-  window.location.replace('../index.html');
+  window.location.replace('index.html');
 }
 function loginSingoutControl() {
   var loginControl = document.querySelector('#loginControl');
@@ -300,7 +300,7 @@ function recordUserStatus(userInfo) {
   blingMotorUserStatus['isLogin'] = true;
   blingMotorUserStatus['userInfo'] = userInfo;
   localStorage.setItem('blingMotorUserInfo', JSON.stringify(blingMotorUserStatus['userInfo']));
-  window.location.replace('../index.html');
+  window.location.replace('index.html');
 }
 checkLogin();
 //# sourceMappingURL=all.js.map

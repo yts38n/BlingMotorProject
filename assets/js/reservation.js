@@ -21,7 +21,7 @@ function newBooking() {
         }
       }).then(function (response) {
         alert(response.data.data.status);
-        window.location.replace('../index.html');
+        window.location.replace('index.html');
       })["catch"](function (error) {
         alert(error.response.data.data.msg);
       });
