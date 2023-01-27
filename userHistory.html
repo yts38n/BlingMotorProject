@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>機妍 專業機車美容</title>
+	<link rel="stylesheet" href="./assets/style/all.css">
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg bg-dark-300 px-4 py-5">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="../index.html">
+            <h1 class="h2 text-primary fw-bolder mr-1 d-inline">機妍</h1>
+            <span class="h2 text-white fw-semibold">機車美容</span>
+        </a>
+        <button class="navbar-toggler p-0 border-0" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+            <span class="material-symbols-outlined text-white h2">menu</span>
+        </button>
+        <div class="offcanvas offcanvas-end p-3 bottom-initial" tabindex="-1" id="offcanvasNavbar"
+            aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header mb-2">
+                <h2 class="offcanvas-title text-primary fw-bolder" id="offcanvasNavbarLabel">機妍</h2>
+                <span class="material-symbols-outlined h2" data-bs-dismiss="offcanvas" aria-label="Close">close</span>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 offcanvas-body-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="../index.html">首頁</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../reservation.html">馬上預約</a>
+                    </li>
+                    <li class="nav-item d-none" id="myInfo">
+                        <a class="nav-link" href="../userInfo.html">個人資料</a>
+                    </li>
+                    <li class="nav-item d-none" id="myHistory">
+                        <a class="nav-link" href="../userHistory.html">我的預約</a>
+                    </li>
+                    <li class="nav-item loginSingoutControl d-none" id="loginControl">
+                        <a class="nav-link" href="../login.html">登入</a>
+                        <a class="btn btn-user" href="../login.html">登入</a>
+                    </li>
+                    <li class="nav-item loginSingoutControl d-none" id="singoutControl">
+                        <a class="nav-link" href="#">登出</a>
+                        <a class="btn btn-user" href="#">登出</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+	<main>
+		
+<section class="container userHistory">
+    <h2 class="sectionTitle">我的預約</h2>
+
+    <table class="table">
+        <thead>
+            <tr class="userHistoryTableHeader">
+                <th>預約日期</th>
+                <th>套裝</th>
+                <th style="width: 50%;">備註</th>
+                <th>狀態</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</section>
+	</main>
+
+	<footer class="footer">
+    <div class="innerWrap">
+        <a class="buttomLogo flex-md-grow-1" href="../index.html">
+            <span class="text-primary fw-bolder">機妍</span>
+            <span class="fw-semibold">機車美容</span>
+        </a>
+
+        <ul class="footerSocial">
+            <li><a href="#"><img src="https://img.icons8.com/fluency-systems-regular/50/FFFFFF/facebook-new.png"
+                        alt="facebook"></a></li>
+            <li><a href="#"><img src="https://img.icons8.com/fluency-systems-regular/50/FFFFFF/instagram.png"
+                        alt="instagram"></a></li>
+            <li><a href="#"><img src="https://img.icons8.com/fluency-systems-regular/50/FFFFFF/line-me.png"
+                        alt=" line"></a>
+            </li>
+        </ul>
+
+        <ul class="footerContact">
+            <li>
+                <div>
+                    <span class="material-symbols-outlined">smartphone</span>
+                    <p class="d-inline">電話</p>
+                </div>
+
+                <a href="tel:+886422220000">(04)-22220000</a>
+            </li>
+            <li>
+                <div>
+                    <span class="material-symbols-outlined">mail</span>
+                    <p class="d-inline">信箱</p>
+                </div>
+                <a href="mailto:service@blingblingbike.com">service@blingblingbike.com</a>
+            </li>
+            <li>
+                <div>
+                    <span class="material-symbols-outlined">location_on</span>
+                    <p class="d-inline">地址</p>
+                </div>
+                <p>400台中市中區台灣大道一段1號</p>
+            </li>
+        </ul>
+    </div>
+
+    <p class="copyright">© 2022 BlingBlingBike. All rights reserved.</p>
+</footer>
+
+	<script src="https://accounts.google.com/gsi/client" async defer></script>
+	<script src="./assets/js/vendors.js"></script>
+	<script src="./assets/js/all.js"></script>
+	
+		<script src="./assets/js/userHistory.js"></script>
+	
+</body>
+
+</html>
