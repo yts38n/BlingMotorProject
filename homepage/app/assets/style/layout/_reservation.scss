@@ -3,13 +3,13 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    
-    @include media-breakpoint-up(lg){
+
+    @include media-breakpoint-up(lg) {
         flex-direction: row;
         flex-wrap: wrap;
         align-items: center;
 
-        .sectionTitle{
+        .sectionTitle {
             width: 100%;
         }
     }
@@ -24,7 +24,7 @@
     border-radius: 32px;
     gap: 20px;
 
-    @include media-breakpoint-up(lg){
+    @include media-breakpoint-up(lg) {
         max-width: 60%;
     }
 }
@@ -45,7 +45,7 @@
         font-size: 1.25rem;
         margin: 0;
 
-        @include media-breakpoint-up(md){
+        @include media-breakpoint-up(md) {
             font-size: 1.5rem;
         }
     }
@@ -58,7 +58,7 @@
     font-size: 0.875rem;
     padding: 0;
 
-    @include media-breakpoint-up(md){
+    @include media-breakpoint-up(md) {
         font-size: 1rem;
     }
 }
@@ -88,11 +88,19 @@
     span {
         display: none;
     }
+
+    &:hover {
+        cursor: default;
+    }
 }
 
 .dateFull {
     background-color: #f2dede;
     color: #a94442;
+
+    &:hover {
+        cursor: default;
+    }
 }
 
 .pickerColorGuide {
@@ -144,11 +152,12 @@
     }
 }
 
-.newBooking-form{
-    @include media-breakpoint-up(lg){
+.newBooking-form {
+    @include media-breakpoint-up(lg) {
         max-width: 35%;
     }
 }
+
 .newBooking-form-wrap {
     display: flex;
     flex-direction: column;
