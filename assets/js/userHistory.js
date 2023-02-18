@@ -6,7 +6,7 @@ var userHistoryData = [];
 var tbody = document.querySelector('tbody');
 var editReservationElement = "\n<div class=\"container reservation\">\n    <div class=\"reservation-wrap\">\n        <div class=\"container calendar\" id=\"calendar\"></div>\n\n        <div class=\"pickerColorGuide\">\n            <div class=\"pickerColorGuide-item\">\n                <div class=\"colorBox colorBox-red\"></div>\n                <p>\u9810\u7D04\u5DF2\u6EFF</p>\n            </div>\n            <div class=\"pickerColorGuide-item\">\n                <div class=\"colorBox colorBox-gray\"></div>\n                <p>\u53EF\u9810\u7D04</p>\n            </div>\n            <div class=\"pickerColorGuide-item\">\n                <div class=\"colorBox colorBox-green\"></div>\n                <p>\u5DF2\u9078\u64C7</p>\n            </div>\n        </div>\n    </div>\n\n    <div class=\"container newBooking-form\">\n        <form action=\"\" class=\"newBooking-form-wrap\">\n            <div class=\"form-group\">\n                <div class=\"newBooking-input\">\n                    <label for=\"selectedDate\">\u65E5\u671F</label>\n                    <input type=\"text\" id=\"selectedDate\" name=\"\u65E5\u671F\" readonly value=\"\" class=\"form-control-plaintext\">\n                </div>\n                <div class=\"alert-message\">\n                    <p id=\"selectedDate-message\" data-message=\"\u65E5\u671F\"></p>\n                </div>\n            </div>\n\n            <div class=\"form-group\">\n                <div class=\"newBooking-input\">\n                    <label for=\"selectedPlan\">\u5957\u88DD</label>\n                    <select class=\"form-select form-select-sm\" id=\"selectedPlan\">\n                        <option selected disabled>\u8ACB\u9078\u64C7\u5957\u88DD</option>\n                        <option value=\"\u57FA\u790E\u8B77\u7406\">\u57FA\u790E\u8B77\u7406</option>\n                        <option value=\"\u9032\u968E\u934D\u6676\">\u9032\u968E\u934D\u6676</option>\n                        <option value=\"\u9802\u7D1A\u934D\u819C\">\u9802\u7D1A\u934D\u819C</option>\n                    </select>\n                </div>\n                <div class=\"alert-message\">\n                    <p id=\"selectedPlan-message\" data-message=\"\u5957\u88DD\"></p>\n                </div>\n            </div>\n\n            <div class=\"form-group\">\n                <div class=\"newBooking-input\">\n                    <label for=\"customerMsg\" class=\"align-self-start\">\u5099\u8A3B</label>\n                    <textarea class=\"form-control form-control-sm\" id=\"customerMsg\" name=\"\u5099\u8A3B\" rows=\"3\" maxlength=\"100\" placeholder=\"\u8ACB\u63D0\u4F9B\u8ECA\u578B\"></textarea>\n                </div>\n                <div class=\"alert-message\">\n                    <p id=\"customerMsg-message\" data-message=\"\u5099\u8A3B\"></p>\n                </div>\n            </div>\n            \n            <div class=\"userHistoryEditBookingBtn-group\">\n                <input type=\"button\" class=\"btn btn-dark-200\" value=\"\u53D6\u6D88\u9810\u7D04\" id=\"cancelBooking\">\n                <input type=\"button\" class=\"btn btn-primary\" value=\"\u78BA\u8A8D\u4FEE\u6539\" id=\"confirmEdit\">\n            </div>\n        </form>\n    </div>\n</div>";
 function getUserReservation() {
-  axios.post("https://bling-motor-mock-server.onrender.com/api/v1/customers/history", {
+  axios.post("http://localhost:3000/api/v1/customers/history", {
     'data': {
       'token': userToken
     }
@@ -28,7 +28,7 @@ function updateReservation() {
     return id === parseInt(bookingId);
   });
   if (originalBookingInfo['date'] !== selectedDate || originalBookingInfo['plan'] !== selectedPlan || originalBookingInfo['userRemarks'] !== customerMsg) {
-    axios.patch("https://bling-motor-mock-server.onrender.com/api/v1/customers/booking", {
+    axios.patch("http://localhost:3000/api/v1/customers/booking", {
       'data': {
         'token': userToken,
         'bookingId': bookingId,
@@ -39,7 +39,6 @@ function updateReservation() {
         }
       }
     }).then(function (response) {
-      console.log(response);
       alert(response.data.data.msg);
       window.location.reload();
     })["catch"](function (error) {
@@ -51,7 +50,7 @@ function updateReservation() {
 }
 function deleteReservation() {
   var bookingId = document.querySelector('#userHistoryCalendar').previousSibling.dataset.bookingid;
-  axios["delete"]("https://bling-motor-mock-server.onrender.com/api/v1/customers/booking", {
+  axios["delete"]("http://localhost:3000/api/v1/customers/booking", {
     data: {
       'token': userToken,
       'bookingId': bookingId
@@ -66,7 +65,7 @@ function deleteReservation() {
 function getSelectedBookingCalendar(selectedBooking) {
   var targetYear = new Date(parseInt(selectedBooking['date'])).getFullYear();
   var targetMonth = new Date(parseInt(selectedBooking['date'])).getMonth() + 1;
-  axios.get("https://bling-motor-mock-server.onrender.com/api/v1/customers/calendar", {
+  axios.get("http://localhost:3000/api/v1/customers/calendar", {
     params: {
       'year': targetYear.toString(),
       'month': targetMonth.toString()

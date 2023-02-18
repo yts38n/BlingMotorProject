@@ -10,7 +10,7 @@ function customerSignUp() {
   var userPasswordCfm = document.querySelector('#userPasswordCfm').value.toString();
   if (userName !== '' && userPhone !== '' && userEmail !== '' && userPassword !== '' && userPasswordCfm !== '') {
     if (userPassword === userPasswordCfm) {
-      axios.post("https://bling-motor-mock-server.onrender.com/api/v1/customers/register", {
+      axios.post("http://localhost:3000/api/v1/customers/register", {
         'data': {
           userName: userName,
           userPhone: userPhone,
