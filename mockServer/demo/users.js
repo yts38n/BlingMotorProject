@@ -59,7 +59,7 @@ function userLogin(user) {
         'msg': ''
     };
 
-    if (item !== undefined && item['userIdentity'] === user['userIdentity']) {
+    if (item !== undefined) {
         if (item['userPassword'] === user['password']) {
             result['user'] = generateUserData(item);
             result['status'] = true;

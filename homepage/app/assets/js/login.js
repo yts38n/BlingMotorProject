@@ -5,14 +5,12 @@ signInBtn.addEventListener('click', customerLogin);
 function customerLogin() {
     let userEmail = document.querySelector('#userEmail').value.toString();
     let userPassword = document.querySelector('#userPassword').value.toString();
-    let userIdentity = document.querySelector('#userIdentity').value.toString();
 
-    if (customerEmail !== '' && userPassword !== '') {
-        axios.post(`https://bling-motor-mock-server.onrender.com/api/v1/customers/login`, {
+    if (userEmail !== '' && userPassword !== '') {
+        axios.post(`http://localhost:3000/api/v1/customers/login`, {
                 'data': {
                     'userEmail': userEmail,
                     'password': userPassword,
-                    'userIdentity': userIdentity
                 }
             })
             .then(response => {
