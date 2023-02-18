@@ -106,7 +106,6 @@ function updateReservation() {
                 }
             })
             .then(response => {
-                console.log(response);
                 alert(response.data.data.msg);
                 window.location.reload();
             })
