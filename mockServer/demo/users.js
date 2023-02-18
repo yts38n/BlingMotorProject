@@ -1,25 +1,36 @@
 const data = [{
     "id": 1,
-    "customerName": "測試用戶一號",
+    "userName": "機妍管理者一號",
     "userPassword": "00000000",
-    "customerEmail": "testUser01@gmail.com",
-    "customerPhone": "0911222333"
-}, {
+    "userEmail": "service@blingblingbike.com",
+    "userPhone": "(04)-22220000",
+    "userIdentity":"管理者"
+},{
     "id": 2,
-    "customerName": "測試用戶二號",
+    "userName": "測試用戶一號",
     "userPassword": "00000000",
-    "customerEmail": "testUser02@gmail.com",
-    "customerPhone": "0900111222"
+    "userEmail": "testUser01@gmail.com",
+    "userPhone": "0911222333",
+    "userIdentity":"一般使用者"
+}, {
+    "id": 3,
+    "userName": "測試用戶二號",
+    "userPassword": "00000000",
+    "userEmail": "testUser02@gmail.com",
+    "userPhone": "0900111222",
+    "userIdentity":"一般使用者"
 }];
 const initDataNum = 2;
 let nextId = initDataNum;
 
-function getData(userToken) {
+function checkUser(userToken) {
+    
     let item = data.find(({
-        customerEmail
+        userEmail
     }) => {
-        return customerEmail === userToken;
+        return userEmail === userToken;
     })
+
     let result = generateUserData(item);
     return result;
 }
@@ -35,11 +46,11 @@ function generateUserData(data) {
     return item;
 }
 
-function checkUser(user) {
+function userLogin(user) {
     let item = data.find(({
-        customerEmail
+        userEmail
     }) => {
-        return customerEmail === user['customerEmail'];
+        return userEmail === user['userEmail'];
     })
 
     let result = {
@@ -67,9 +78,9 @@ function checkUser(user) {
 
 function createUser(user) {
     let item = data.find(({
-        customerEmail
+        userEmail
     }) => {
-        return customerEmail === user['customerEmail'];
+        return userEmail === user['userEmail'];
     })
 
     let result = {
@@ -80,6 +91,7 @@ function createUser(user) {
 
     if (item === undefined) {
         user['id'] = ++nextId;
+        user['userIdentity'] = '一般使用者';
         data.push(user);
         result['user'] = generateUserData(data[data.length - 1]);
         result['status'] = true;
@@ -93,13 +105,13 @@ function createUser(user) {
 }
 
 function editUser(reqData) {
-    const index = data.findIndex(el => el['customerEmail'] === reqData['token']);
+    const index = data.findIndex(el => el['userEmail'] === reqData['token']);
     let newUserInfo = reqData['newUserInfo'];
 
     if (newUserInfo.hasOwnProperty('oldPassword') === true && newUserInfo.hasOwnProperty('newPassword') === true) {
         if (newUserInfo['oldPassword'] === data[index]['password']) {
-            data[index]['customerName'] = newUserInfo['customerName'];
-            data[index]['customerPhone'] = newUserInfo['customerPhone'];
+            data[index]['userName'] = newUserInfo['userName'];
+            data[index]['userPhone'] = newUserInfo['userPhone'];
             data[index]['password'] = newUserInfo['newPassword'];
             let result = generateUserData(data[index]);
             return result;
@@ -107,17 +119,17 @@ function editUser(reqData) {
             return -1;
         }
     } else {
-        data[index]['customerName'] = newUserInfo['customerName'];
-        data[index]['customerPhone'] = newUserInfo['customerPhone'];
+        data[index]['userName'] = newUserInfo['userName'];
+        data[index]['userPhone'] = newUserInfo['userPhone'];
         let result = generateUserData(data[index]);
         return result;
     }
 }
 
 module.exports = {
-    getData,
+    checkUser,
     createUser,
     editUser,
-    checkUser,
+    userLogin,
     data
 }

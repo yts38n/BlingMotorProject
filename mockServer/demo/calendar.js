@@ -3,7 +3,7 @@ const data = [{
     "year": "2023",
     "months": {
         "1": {
-            "available": true,
+            "available": false,
             "dates": {
                 "1672502400000": {
                     "available": false,
@@ -246,6 +246,135 @@ const data = [{
                     "available": true,
                     "spaces": 2
                 }
+            }
+        },
+        "3": {
+            "available": true,
+            "dates": {
+                "1677600000000": {
+                    "available": true,
+                    "spaces": 5
+                },
+                "1677686400000": {
+                    "available": true,
+                    "spaces": 5
+                },
+                "1677772800000": {
+                    "available": true,
+                    "spaces": 5
+                },
+                "1677859200000": {
+                    "available": true,
+                    "spaces": 5
+                },
+                "1677945600000": {
+                    "available": true,
+                    "spaces": 5
+                },
+                "1678032000000": {
+                    "available": true,
+                    "spaces": 5
+                },
+                "1678118400000": {
+                    "available": true,
+                    "spaces": 0
+                },
+                "1678204800000": {
+                    "available": true,
+                    "spaces": 5
+                },
+                "1678291200000": {
+                    "available": true,
+                    "spaces": 5
+                },
+                "1678377600000": {
+                    "available": true,
+                    "spaces": 5
+                },
+                "1678464000000": {
+                    "available": true,
+                    "spaces": 0
+                },
+                "1678550400000": {
+                    "available": true,
+                    "spaces": 5
+                },
+                "1678636800000": {
+                    "available": true,
+                    "spaces": 5
+                },
+                "1678723200000": {
+                    "available": true,
+                    "spaces": 5
+                },
+                "1678809600000": {
+                    "available": true,
+                    "spaces": 5
+                },
+                "1678896000000": {
+                    "available": true,
+                    "spaces": 5
+                },
+                "1678982400000": {
+                    "available": true,
+                    "spaces": 5
+                },
+                "1679068800000": {
+                    "available": true,
+                    "spaces": 5
+                },
+                "1679155200000": {
+                    "available": true,
+                    "spaces": 5
+                },
+                "1679241600000": {
+                    "available": true,
+                    "spaces": 5
+                },
+                "1679328000000": {
+                    "available": true,
+                    "spaces": 5
+                },
+                "1679414400000": {
+                    "available": true,
+                    "spaces": 5
+                },
+                "1679500800000": {
+                    "available": true,
+                    "spaces": 5
+                },
+                "1679587200000": {
+                    "available": true,
+                    "spaces": 5
+                },
+                "1679673600000": {
+                    "available": true,
+                    "spaces": 5
+                },
+                "1679760000000": {
+                    "available": true,
+                    "spaces": 5
+                },
+                "1679846400000": {
+                    "available": true,
+                    "spaces": 5
+                },
+                "1679932800000": {
+                    "available": true,
+                    "spaces": 5
+                },
+                "1680019200000": {
+                    "available": true,
+                    "spaces": 5
+                },
+                "1680105600000": {
+                    "available": true,
+                    "spaces": 5
+                },
+                "1680192000000": {
+                    "available": true,
+                    "spaces": 5
+                },
             }
         }
     }

@@ -194,7 +194,7 @@ let signoutBtn = document.querySelector('#singoutControl');
 signoutBtn.addEventListener('click', doSignout);
 
 function getCalendar(newQueryYear, newQueryMonth) {
-    axios.get(`https://bling-motor-mock-server.onrender.com/api/v1/customers/calendar`, {
+    axios.get(`http://localhost:3000/api/v1/customers/calendar`, {
             params: {
                 'year': newQueryYear.toString(),
                 'month': newQueryMonth.toString()
@@ -230,7 +230,7 @@ function calanderEventListeners() {
         }
         getCalendar(targetYear, targetMonth)
     });
-    
+
     document.querySelector('.nextMonth').addEventListener('click', () => {
         let targetYear = 0;
         let targetMonth = 0;

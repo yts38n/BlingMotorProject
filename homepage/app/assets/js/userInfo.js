@@ -8,8 +8,8 @@ resetForm.addEventListener('click', () => {
 });
 
 updateInfo.addEventListener('click', () => {
-    let customerName = document.querySelector('#customerName').value.toString();
-    let customerPhone = document.querySelector('#customerPhone').value.toString();
+    let userName = document.querySelector('#userName').value.toString();
+    let userPhone = document.querySelector('#userPhone').value.toString();
     let oldPassword = document.querySelector('#oldPassword').value.toString();
     let newPassword = document.querySelector('#newPassword').value.toString();
     let newPasswordCfm = document.querySelector('#newPasswordCfm').value.toString();
@@ -17,15 +17,15 @@ updateInfo.addEventListener('click', () => {
 
 
     if (newPassword === '' && newPasswordCfm === '') {
-        newUserInfo['customerName'] = customerName;
-        newUserInfo['customerPhone'] = customerPhone;
+        newUserInfo['userName'] = userName;
+        newUserInfo['userPhone'] = userPhone;
     } else if (newPassword !== '' && oldPassword === '') {
         alert('如需變更密碼須輸入原密碼');
     } else if (newPassword !== newPasswordCfm) {
         alert('新密碼輸入不一致');
     } else {
-        newUserInfo['customerName'] = customerName;
-        newUserInfo['customerPhone'] = customerPhone;
+        newUserInfo['userName'] = userName;
+        newUserInfo['userPhone'] = userPhone;
         newUserInfo['oldPassword'] = oldPassword;
         newUserInfo['newPassword'] = newPassword;
     }
@@ -34,8 +34,8 @@ updateInfo.addEventListener('click', () => {
 });
 
 function getUserInfoData() {
-    let userToken = blingMotorUserStatus['userInfo']['customerEmail'];
-    axios.post(`https://bling-motor-mock-server.onrender.com/api/v1/customers/info`, {
+    let userToken = blingMotorUserStatus['userInfo']['userEmail'];
+    axios.post(`http://localhost:3000/api/v1/customers/info`, {
             'data': {
                 'token': userToken,
             }
@@ -50,8 +50,8 @@ function getUserInfoData() {
 }
 
 function editUserInfoData(newUserInfo) {
-    let userToken = blingMotorUserStatus['userInfo']['customerEmail'];
-    axios.patch(`https://bling-motor-mock-server.onrender.com/api/v1/customers/info`, {
+    let userToken = blingMotorUserStatus['userInfo']['userEmail'];
+    axios.patch(`http://localhost:3000/api/v1/customers/info`, {
             'data': {
                 'token': userToken,
                 'newUserInfo': newUserInfo
@@ -70,7 +70,9 @@ function editUserInfoData(newUserInfo) {
 function renderuserInfoData(data) {
     let arr = Object.keys(data);
     arr.forEach(el => {
-        document.querySelector(`#${el}`).setAttribute('value', data[el]);
+        if (el !== 'userIdentity') {
+            document.querySelector(`#${el}`).setAttribute('value', data[el]);
+        }
     })
 }
 
