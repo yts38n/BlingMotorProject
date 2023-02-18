@@ -31,7 +31,7 @@ updateInfo.addEventListener('click', function () {
 });
 function getUserInfoData() {
   var userToken = blingMotorUserStatus['userInfo']['userEmail'];
-  axios.post("http://localhost:3000/api/v1/customers/info", {
+  axios.post("https://bling-motor-mock-server.onrender.com/api/v1/customers/info", {
     'data': {
       'token': userToken
     }
@@ -44,7 +44,7 @@ function getUserInfoData() {
 }
 function editUserInfoData(newUserInfo) {
   var userToken = blingMotorUserStatus['userInfo']['userEmail'];
-  axios.patch("http://localhost:3000/api/v1/customers/info", {
+  axios.patch("https://bling-motor-mock-server.onrender.com/api/v1/customers/info", {
     'data': {
       'token': userToken,
       'newUserInfo': newUserInfo
