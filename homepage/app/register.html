@@ -4,6 +4,7 @@ layout: ./app/layout.ejs
 engine: ejs
 current: register
 extraJS: 'register'
+adminOnly: 'false'
 ---
 <section class="container">
     <div class="registerAndLogin">
@@ -11,23 +12,23 @@ extraJS: 'register'
             <h2 class="sectionTitle">建立帳戶</h2>
             <form>
                 <div class="form-item">
-                    <input type="text" id="customerName" placeholder="姓名" name="姓名" class="form-control">
+                    <input type="text" id="userName" placeholder="姓名" name="姓名" class="form-control">
                     <div class="alert-message">
-                        <p id="customerName-message" data-message="姓名"></p>
+                        <p id="userName-message" data-message="姓名"></p>
                     </div>
                 </div>
 
                 <div class="form-item">
-                    <input type="tel" id="customerPhone" placeholder="電話" name="電話" class="form-control">
+                    <input type="tel" id="userPhone" placeholder="電話" name="電話" class="form-control">
                     <div class="alert-message">
-                        <p id="customerPhone-message" data-message="電話"></p>
+                        <p id="userPhone-message" data-message="電話"></p>
                     </div>
                 </div>
 
                 <div class="form-item">
-                    <input type="email" id="customerEmail" placeholder="電子郵件" name="電子郵件" class="form-control">
+                    <input type="email" id="userEmail" placeholder="電子郵件" name="電子郵件" class="form-control">
                     <div class="alert-message">
-                        <p id="customerEmail-message" data-message="電子郵件"></p>
+                        <p id="userEmail-message" data-message="電子郵件"></p>
                     </div>
                 </div>
 

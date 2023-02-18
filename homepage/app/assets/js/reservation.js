@@ -10,9 +10,9 @@ function newBooking() {
         let customerMsg = document.querySelector('#customerMsg').value.toString();
 
         if (selectedDate !== '' && selectedPlan !== '' & customerMsg !== '') {
-            let userToken = blingMotorUserStatus['userInfo']['customerEmail'];
+            let userToken = blingMotorUserStatus['userInfo']['userEmail'];
 
-            axios.post(`https://bling-motor-mock-server.onrender.com/api/v1/customers/booking`, {
+            axios.post(`http://localhost:3000/api/v1/customers/booking`, {
                 'data': {
                     'token': userToken,
                     'newBookingInfo': {

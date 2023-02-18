@@ -48,6 +48,14 @@ function getData(userToken) {
     return result;
 }
 
+function getAllData() {
+    let result = [];
+    data.forEach(el => {
+        result.push(el)
+    });
+    return result;
+}
+
 function newBooking(reqData) {
     let user = reqData['token'];
     let newBookingInfo = reqData['newBookingInfo'];
@@ -134,6 +142,7 @@ function isDateChange(reqData) {
 
 module.exports = {
     getData,
+    getAllData,
     newBooking,
     updateBooking,
     deleteBooking,

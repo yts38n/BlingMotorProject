@@ -1,4 +1,4 @@
-let userToken = blingMotorUserStatus['userInfo']['customerEmail'];
+let userToken = blingMotorUserStatus['userInfo']['userEmail'];
 let userHistoryData = [];
 let tbody = document.querySelector('tbody');
 let editReservationElement = `
@@ -68,7 +68,7 @@ let editReservationElement = `
 </div>`;
 
 function getUserReservation() {
-    axios.post(`https://bling-motor-mock-server.onrender.com/api/v1/customers/history`, {
+    axios.post(`http://localhost:3000/api/v1/customers/history`, {
             'data': {
                 'token': userToken,
             }
@@ -94,7 +94,7 @@ function updateReservation() {
     }) => id === parseInt(bookingId));
 
     if (originalBookingInfo['date'] !== selectedDate || originalBookingInfo['plan'] !== selectedPlan || originalBookingInfo['userRemarks'] !== customerMsg) {
-        axios.patch(`https://bling-motor-mock-server.onrender.com/api/v1/customers/booking`, {
+        axios.patch(`http://localhost:3000/api/v1/customers/booking`, {
                 'data': {
                     'token': userToken,
                     'bookingId': bookingId,
@@ -123,7 +123,7 @@ function updateReservation() {
 function deleteReservation() {
     let bookingId = document.querySelector('#userHistoryCalendar').previousSibling.dataset.bookingid;
 
-    axios.delete(`https://bling-motor-mock-server.onrender.com/api/v1/customers/booking`, {
+    axios.delete(`http://localhost:3000/api/v1/customers/booking`, {
             data: {
                 'token': userToken,
                 'bookingId': bookingId
@@ -142,7 +142,7 @@ function getSelectedBookingCalendar(selectedBooking) {
     let targetYear = new Date(parseInt(selectedBooking['date'])).getFullYear();
     let targetMonth = new Date(parseInt(selectedBooking['date'])).getMonth() + 1;
 
-    axios.get(`https://bling-motor-mock-server.onrender.com/api/v1/customers/calendar`, {
+    axios.get(`http://localhost:3000/api/v1/customers/calendar`, {
             params: {
                 'year': targetYear.toString(),
                 'month': targetMonth.toString()

@@ -3,20 +3,20 @@ let signUpBtn = document.querySelector('#createUser');
 signUpBtn.addEventListener('click', customerSignUp);
 
 function customerSignUp() {
-    let customerName = document.querySelector('#customerName').value.toString();
-    let customerPhone = document.querySelector('#customerPhone').value.toString();
-    let customerEmail = document.querySelector('#customerEmail').value.toString();
+    let userName = document.querySelector('#userName').value.toString();
+    let userPhone = document.querySelector('#userPhone').value.toString();
+    let userEmail = document.querySelector('#userEmail').value.toString();
     let userPassword = document.querySelector('#userPassword').value.toString();
     let userPasswordCfm = document.querySelector('#userPasswordCfm').value.toString();
 
 
-    if (customerName !== '' && customerPhone !== '' && customerEmail !== '' && userPassword !== '' && userPasswordCfm !== '') {
+    if (userName !== '' && userPhone !== '' && userEmail !== '' && userPassword !== '' && userPasswordCfm !== '') {
         if (userPassword === userPasswordCfm) {
-            axios.post(`https://bling-motor-mock-server.onrender.com/api/v1/customers/register`, {
+            axios.post(`http://localhost:3000/api/v1/customers/register`, {
                     'data': {
-                        customerName,
-                        customerPhone,
-                        customerEmail,
+                        userName,
+                        userPhone,
+                        userEmail,
                         userPassword
                     }
                 })

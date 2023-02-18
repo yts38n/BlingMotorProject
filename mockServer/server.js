@@ -11,15 +11,89 @@ server.use(jsonServer.bodyParser);
 
 server.use((req, res) => {
     let reqUrl = url.parse(req.url).pathname;
+    const notAllowedCharacters = /[^a-z]/;
 
     //檢查API路徑進入點是否正確
-    if (reqUrl.startsWith('/api/v1/customers/') === false) {
-        invalidApi(res);
-    } else {
+    if (reqUrl.startsWith('/api/v1/admin/') === true) {
+        let [, route] = reqUrl.split('/api/v1/admin/');
+
+        //檢查是否存在其他符號       
+        if (route.search(notAllowedCharacters) !== -1) {
+            invalidApi(res);
+        } else if (route === 'login') {
+            let user = {};
+            let result = {};
+
+            if (req.body.hasOwnProperty('data') !== false) {
+                user = req.body.data;
+
+                result = db.data.users.userLogin(user);
+                if (result['status'] === true) {
+                    successAction(res, result);
+                } else {
+                    failAction(res, result);
+                }
+
+            } else {
+                dataNotValid(res);
+            }
+        } else {
+            let userToken = null;
+            let checkUserToken = undefined;
+
+            //檢查'GET'以外的方法是否帶有data
+            if (req.method !== 'GET') {
+                if (req.method !== 'DELETE') {
+                    if (req.body.hasOwnProperty('data') !== false) {
+                        userToken = (req.body.data.hasOwnProperty('token') === true) ? req.body.data['token'] : null;
+                        checkUserToken = db.data.users.checkUser(userToken); //undefined if the token is incorrect
+                    } else {
+                        dataNotValid(res);
+                    }
+                } else {
+                    if (req.body.hasOwnProperty('token') !== false) {
+                        userToken = req.body['token'];
+                        checkUserToken = db.data.users.checkUser(userToken); //undefined if the token is incorrect
+                    } else {
+                        dataNotValid(res);
+                    }
+                }
+            }
+            console.log(checkUserToken);
+
+            switch (route) {
+                case 'allBookings':
+                    if (checkUserToken !== undefined) {
+                        switch (req.method) {
+                            case 'POST':
+                                let result = db.data.bookings.getAllData(userToken);
+                                res.status(200).jsonp({
+                                    status: 200,
+                                    msg: '已取得所有預訂記錄!!',
+                                    data: result
+                                });
+                                break;
+
+                            default:
+                                invalidMethod(res);
+                                break;
+
+                        }
+                    } else {
+                        dataNotValid(res);
+                    }
+                    break;
+
+                default:
+                    invalidApi(res);
+                    break;
+            }
+        }
+
+    } else if (reqUrl.startsWith('/api/v1/customers/') === true) {
         let [, route] = reqUrl.split('/api/v1/customers/');
 
-        //檢查是否存在其他符號
-        const notAllowedCharacters = /[^a-z]/;
+        //檢查是否存在其他符號       
         if (route.search(notAllowedCharacters) !== -1) {
             invalidApi(res);
         } else if (route === 'login' || route === 'register') {
@@ -32,7 +106,7 @@ server.use((req, res) => {
 
                 switch (route) {
                     case 'login':
-                        result = db.data.users.checkUser(user);
+                        result = db.data.users.userLogin(user);
                         if (result['status'] === true) {
                             successAction(res, result);
                         } else {
@@ -57,7 +131,6 @@ server.use((req, res) => {
                 dataNotValid(res);
             }
 
-
         } else {
             let userToken = null;
             let checkUserToken = undefined;
@@ -67,14 +140,14 @@ server.use((req, res) => {
                 if (req.method !== 'DELETE') {
                     if (req.body.hasOwnProperty('data') !== false) {
                         userToken = (req.body.data.hasOwnProperty('token') === true) ? req.body.data['token'] : null;
-                        checkUserToken = db.data.users.getData(userToken); //undefined if the token is incorrect
+                        checkUserToken = db.data.users.checkUser(userToken); //undefined if the token is incorrect
                     } else {
                         dataNotValid(res);
                     }
                 } else {
                     if (req.body.hasOwnProperty('token') !== false) {
                         userToken = req.body['token'];
-                        checkUserToken = db.data.users.getData(userToken); //undefined if the token is incorrect
+                        checkUserToken = db.data.users.checkUser(userToken); //undefined if the token is incorrect
                     } else {
                         dataNotValid(res);
                     }
@@ -233,10 +306,13 @@ server.use((req, res) => {
                     break;
             }
         }
+    } else {
+        invalidApi(res);
     }
 });
 
 server.use('/api/v1', router);
+
 server.listen(port, () => {
     console.log('===== Json Server is running !! =====');
 });
