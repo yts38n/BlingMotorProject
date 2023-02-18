@@ -14762,6 +14762,10 @@ a {
   }
 }
 
+.calendarMonthPickers .material-symbols-outlined:hover {
+  cursor: pointer;
+}
+
 .dayInners {
   text-align: center;
   line-height: 3rem;

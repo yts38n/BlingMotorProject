@@ -9,7 +9,7 @@ function newBooking() {
     var selectedPlan = document.querySelector('#selectedPlan').value.toString();
     var customerMsg = document.querySelector('#customerMsg').value.toString();
     if (selectedDate !== '' && selectedPlan !== '' & customerMsg !== '') {
-      var userToken = blingMotorUserStatus['userInfo']['customerEmail'];
+      var userToken = blingMotorUserStatus['userInfo']['userEmail'];
       axios.post("https://bling-motor-mock-server.onrender.com/api/v1/customers/booking", {
         'data': {
           'token': userToken,
@@ -21,7 +21,7 @@ function newBooking() {
         }
       }).then(function (response) {
         alert(response.data.data.status);
-        window.location.replace('index.html');
+        window.location.replace('../index.html');
       })["catch"](function (error) {
         alert(error.response.data.data.msg);
       });

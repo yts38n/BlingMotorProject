@@ -3,12 +3,12 @@
 var signInBtn = document.querySelector('#manualSignIn');
 signInBtn.addEventListener('click', customerLogin);
 function customerLogin() {
-  var customerEmail = document.querySelector('#customerEmail').value.toString();
+  var userEmail = document.querySelector('#userEmail').value.toString();
   var userPassword = document.querySelector('#userPassword').value.toString();
-  if (customerEmail !== '' && userPassword !== '') {
+  if (userEmail !== '' && userPassword !== '') {
     axios.post("https://bling-motor-mock-server.onrender.com/api/v1/customers/login", {
       'data': {
-        'customerEmail': customerEmail,
+        'userEmail': userEmail,
         'password': userPassword
       }
     }).then(function (response) {
@@ -16,6 +16,7 @@ function customerLogin() {
       recordUserStatus(userInfo);
     })["catch"](function (error) {
       console.log(error);
+      alert('帳號錯誤! 請重新輸入!');
     });
   } else {
     alert('請填寫 電子郵件 及 密碼 !');
