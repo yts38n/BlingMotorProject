@@ -24,7 +24,9 @@
 
 
 ## 指令列表
-下載完成後，請開啟cmd，__分別以 cd 指令進入***前端(homepage)/後端(BlingMotorProjectAdmin)/伺服器(mockServer)***資料夾__
+下載完成後，請開啟cmd。
+__分別以 cd 指令進入__ ***前端(homepage)/後端(BlingMotorProjectAdmin)/伺服器(mockServer)*** __資料夾__
+
 ```cmd
 cd '資料夾位置' :: 輸入 cd(空格) 後可以直接拉動資料夾到cmd
 npm install
