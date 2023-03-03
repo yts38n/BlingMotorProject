@@ -5,10 +5,10 @@
 ## 專案介紹
 本作品分為2個專案，分別為：
 - [前端畫面（使用者） ＋ 模擬伺服器](https://github.com/yts38n/BlingMotorProject)
-- [Github Pages](https://yts38n.github.io/BlingMotorProject/)
+  - [Github Pages](https://yts38n.github.io/BlingMotorProject/)
 
 - [後端畫面（店家）](https://github.com/yts38n/BlingMotorProjectAdmin)
-- [Github Pages](https://yts38n.github.io/BlingMotorProjectAdmin/)
+  - [Github Pages](https://yts38n.github.io/BlingMotorProjectAdmin/)
 
 ## 指令列表
 下載完成後，請開啟cmd，__分別以 cd 指令進入***前端(homepage)/後端(BlingMotorProjectAdmin)/伺服器(mockServer)***資料夾__
@@ -27,16 +27,3 @@ npm start ::伺服器使用
 - JSON Server (建立模擬伺服器，模擬 RESTful API的運作)
 - Node.js (模組化 JSON Server)
 - Swipper (圖片輪播套件)
-
-## 資料夾結構
-
-- App # 原始碼
-  - assets # 靜態資源放置處
-    - images # 圖片放置處
-    - js # JavaScript 放置處
-    - style # 樣式放置處
-  - index.html # 首頁 HTML
-  - layout.ejs # Layout ejs
-- gulpfile.js # Gulp 原始碼
-  - envOptions.js # Gulp 路徑變數
-  - index.js # Gulp 核心原始碼
