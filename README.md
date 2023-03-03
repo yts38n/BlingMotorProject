@@ -24,8 +24,11 @@
 
 
 ## 指令列表
-下載完成後，請開啟cmd。
-__分別以 cd 指令進入__ ***前端(homepage)/後端(BlingMotorProjectAdmin)/伺服器(mockServer)*** __資料夾__
+下載完成後，請開啟cmd。  
+__分別以 cd 指令進入以下3個資料夾：__ 
+- ***前端(homepage)***  
+- ***後端(BlingMotorProjectAdmin)***  
+- ***伺服器(mockServer)***
 
 ```cmd
 cd '資料夾位置' :: 輸入 cd(空格) 後可以直接拉動資料夾到cmd
