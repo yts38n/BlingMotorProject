@@ -4,27 +4,26 @@ const data = [{
     "userPassword": "00000000",
     "userEmail": "service@blingblingbike.com",
     "userPhone": "(04)-22220000",
-    "userIdentity":"管理者"
-},{
+    "userIdentity": "管理者"
+}, {
     "id": 2,
     "userName": "測試用戶一號",
     "userPassword": "00000000",
     "userEmail": "testUser01@gmail.com",
     "userPhone": "0911222333",
-    "userIdentity":"一般使用者"
+    "userIdentity": "一般使用者"
 }, {
     "id": 3,
     "userName": "測試用戶二號",
     "userPassword": "00000000",
     "userEmail": "testUser02@gmail.com",
     "userPhone": "0900111222",
-    "userIdentity":"一般使用者"
+    "userIdentity": "一般使用者"
 }];
 const initDataNum = 2;
 let nextId = initDataNum;
 
 function checkUser(userToken) {
-    
     let item = data.find(({
         userEmail
     }) => {
@@ -33,6 +32,21 @@ function checkUser(userToken) {
 
     let result = generateUserData(item);
     return result;
+}
+
+function checkAdmin(userToken) {
+    let isAdmin = false;
+    let item = data.find(({
+        userEmail
+    }) => {
+        return userEmail === userToken;
+    })
+
+    if (item !== undefined) {
+        isAdmin = (item['userIdentity'] === '管理者') ? true : false;
+    }
+    console.log('checkAdmin : ' + isAdmin);
+    return isAdmin;
 }
 
 function generateUserData(data) {
@@ -109,10 +123,10 @@ function editUser(reqData) {
     let newUserInfo = reqData['newUserInfo'];
 
     if (newUserInfo.hasOwnProperty('oldPassword') === true && newUserInfo.hasOwnProperty('newPassword') === true) {
-        if (newUserInfo['oldPassword'] === data[index]['password']) {
+        if (newUserInfo['oldPassword'] === data[index]['userPassword']) {
             data[index]['userName'] = newUserInfo['userName'];
             data[index]['userPhone'] = newUserInfo['userPhone'];
-            data[index]['password'] = newUserInfo['newPassword'];
+            data[index]['userPassword'] = newUserInfo['newPassword'];
             let result = generateUserData(data[index]);
             return result;
         } else {
@@ -131,5 +145,6 @@ module.exports = {
     createUser,
     editUser,
     userLogin,
+    checkAdmin,
     data
 }

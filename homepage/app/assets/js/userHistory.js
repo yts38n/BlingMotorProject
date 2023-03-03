@@ -236,24 +236,6 @@ function removeUserHistoryCalendar(targetElement) {
     targetElement.classList.remove("opended");
 }
 
-function monitorEditAction() {
-    let dateWrapper = document.querySelector('.dateWrapper');
-    let bookingFromWrap = document.querySelector('.newBooking-form-wrap');
-    let confirmEdit = document.querySelector('#confirmEdit');
-
-    dateWrapper.addEventListener('click', () => {
-        confirmEdit.addEventListener('click', () => {
-            updateReservation();
-        })
-    })
-
-    bookingFromWrap.addEventListener('change', () => {
-        confirmEdit.addEventListener('click', () => {
-            updateReservation();
-        })
-    })
-}
-
 tbody.addEventListener('click', (e) => {
     if (e.target.classList.contains('opended')) {
         removeUserHistoryCalendar(e.target)

@@ -8,7 +8,7 @@ const data = [{
 }, {
     'id': 2,
     'status': '已完成',
-    'date': '1671552000000',
+    'date': '1676390400000',
     'plan': '基礎護理',
     'email': 'testUser01@gmail.com',
     'userRemarks': 'YAMAHA R3 2010'
@@ -22,7 +22,7 @@ const data = [{
 }, {
     'id': 4,
     'status': '已完成',
-    'date': '1671292800000',
+    'date': '1676390400000',
     'plan': '頂級鍍膜',
     'email': 'testUser02@gmail.com',
     'userRemarks': 'KAWASAKI Z400'
@@ -100,6 +100,34 @@ function updateBooking(reqData) {
     return result;
 }
 
+function updateBookingByAdmin(reqData) {
+    let newBookingInfo = reqData['newBookingInfo'];
+    let result = {
+        'originalBookingDate': '',
+        'updatedBookingInfo': {},
+        'status': false,
+        'msg': ''
+    };
+
+    const index = data.findIndex(el => el['id'] === parseInt(reqData['bookingId']));
+
+    if (index !== -1) {
+            result['originalBookingDate'] = data[index]['date'];
+
+            Object.entries(newBookingInfo).forEach(([key]) => {
+                data[index][key] = newBookingInfo[key]
+            });
+
+            result['updatedBookingInfo'] = data[index];
+            result['status'] = true;
+            result['msg'] = '已更新預訂';
+    } else {
+        result['msg'] = '訂單ID錯誤';
+    }
+
+    return result;
+}
+
 function deleteBooking(reqData) {
     let user = reqData['token'];
     let bookingId = parseInt(reqData['bookingId']);
@@ -145,6 +173,7 @@ module.exports = {
     getAllData,
     newBooking,
     updateBooking,
+    updateBookingByAdmin,
     deleteBooking,
     isDateChange,
     data
