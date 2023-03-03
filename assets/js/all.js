@@ -232,7 +232,7 @@ function getCalendar(newQueryYear, newQueryMonth) {
       alert('該月份未開放預訂');
     }
   })["catch"](function (error) {
-    console.log(error);
+    alert(error.response.data['msg']);
   });
 }
 function calanderEventListeners() {

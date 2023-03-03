@@ -139,21 +139,6 @@ function removeUserHistoryCalendar(targetElement) {
   targetElement.innerText = '修改';
   targetElement.classList.remove("opended");
 }
-function monitorEditAction() {
-  var dateWrapper = document.querySelector('.dateWrapper');
-  var bookingFromWrap = document.querySelector('.newBooking-form-wrap');
-  var confirmEdit = document.querySelector('#confirmEdit');
-  dateWrapper.addEventListener('click', function () {
-    confirmEdit.addEventListener('click', function () {
-      updateReservation();
-    });
-  });
-  bookingFromWrap.addEventListener('change', function () {
-    confirmEdit.addEventListener('click', function () {
-      updateReservation();
-    });
-  });
-}
 tbody.addEventListener('click', function (e) {
   if (e.target.classList.contains('opended')) {
     removeUserHistoryCalendar(e.target);
